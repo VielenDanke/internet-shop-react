@@ -9,7 +9,7 @@ class Goods extends React.Component {
     }
 
     fetchGoods = (props) => {
-        fetch("http://localhost:8989/goods/categories/" + parseInt(props.match.params.number, 10))
+        fetch("http://localhost:8989/goods/categories/" +  parseInt(props.match.params.number, 10))
             .then(res => res.json())
             .then((goods) => {
                 this.setState({
@@ -33,7 +33,8 @@ class Goods extends React.Component {
             <div>
                 {goods.map((g, i) => (
                     <div key={i} id={g.id}>
-                        {g.name}
+                        <a href="#">{g.name}</a>
+                        <a> {g.cost} </a>
                     </div>
                 ))}
             </div>

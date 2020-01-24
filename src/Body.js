@@ -9,7 +9,7 @@ class Body extends React.Component {
         return (
             <Switch>
                 <Route exact path='/' component={Welcome}/>
-                <Route path='/goods/categories/:number' component={Goods}/>
+                <Route path='/goods/categories/:number' render={(props) => <Goods authenticated={this.props.authenticated} {...props}/>}/>
             </Switch>
         )
     }

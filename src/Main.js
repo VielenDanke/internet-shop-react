@@ -7,9 +7,9 @@ class Main extends React.Component {
         return (
             <div className="box-table">
                 <div className="box-row">
-                    <Categories/>
+                    <Categories />
                     <div className="width80 box-col">
-                        <Body />
+                        <Body authenticated={this.props.authenticated}/>
                     </div>
                 </div>
             </div>

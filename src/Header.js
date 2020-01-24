@@ -6,8 +6,17 @@ class Header extends React.Component {
             <div className="box-table">
                 <div className="box width80 box-col"></div>
                 <div className="box width20 box-col">
-                    <a href="#">login</a>
-                    <a href="#">sign up</a>
+                    {(this.props.authenticated) ? (
+                        <div>
+                            <a href="/office">office</a>
+                            <a href="/logout">logout</a>
+                        </div>
+                    ) : (
+                        <div>
+                            <a href="/login">login</a>
+                            <a href="/sign">sign up</a>
+                        </div>
+                    )}
                 </div>
             </div>
         )
