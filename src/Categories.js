@@ -26,9 +26,7 @@ class Categories extends React.Component {
             <div className="width20 box-col">
                 {categories.map((c, i) => (
                     <div key={i} id={c.id}>
-                        {/*<a href={"http://localhost:8989/goods/categories/" + c.id}>{c.name}</a>*/}
                         <Link to={`/goods/categories/${c.id}`}>{c.name}</Link>
-                            {/*<Link to={`/goods`}>{c.name}</Link>*/}
                     </div>
                 ))}
             </div>

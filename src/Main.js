@@ -1,4 +1,4 @@
-import Categories from "./Categories";
+import Menu from "./Menu";
 import Body from "./Body";
 import React from "react";
 
@@ -7,7 +7,7 @@ class Main extends React.Component {
         return (
             <div className="box-table">
                 <div className="box-row">
-                    <Categories />
+                    <Menu />
                     <div className="width80 box-col">
                         <Body authenticated={this.props.authenticated}/>
                     </div>

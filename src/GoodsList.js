@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Goods extends React.Component {
+class GoodsList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -35,6 +35,7 @@ class Goods extends React.Component {
                     <div key={i} id={g.id}>
                         <a href="#">{g.name}</a>
                         <a> {g.cost} </a>
+                        <a> {g.description} </a>
                     </div>
                 ))}
             </div>
@@ -42,4 +43,4 @@ class Goods extends React.Component {
     }
 }
 
-export default Goods
+export default GoodsList
