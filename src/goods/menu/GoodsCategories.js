@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
 
-class Categories extends React.Component {
+class GoodsCategories extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -34,4 +34,4 @@ class Categories extends React.Component {
     }
 }
 
-export default Categories
+export default GoodsCategories

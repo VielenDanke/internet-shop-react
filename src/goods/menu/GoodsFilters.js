@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
 
-class Filters extends React.Component {
+class GoodsFilters extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -26,4 +26,4 @@ class Filters extends React.Component {
     }
 }
 
-export default Filters
+export default GoodsFilters

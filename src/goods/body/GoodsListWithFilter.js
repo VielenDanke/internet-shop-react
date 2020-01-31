@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 
 class GoodsListWithFilter extends React.Component {
     constructor(props) {
@@ -72,7 +73,7 @@ class GoodsListWithFilter extends React.Component {
             <div>
                 {goods.map((g, i) => (
                     <div key={i} id={g.id}>
-                        <a href="#">{g.name}</a>
+                        <Link to={`/goods/${g.id}`}>{g.name}</Link>
                         <a> {g.cost} </a>
                         <a> {g.description} </a>
                     </div>

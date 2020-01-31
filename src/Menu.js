@@ -1,15 +1,17 @@
 import React from "react";
 
 import {Route, Switch} from "react-router-dom";
-import Categories from "./Categories";
-import Filters from "./Filters";
+import GoodsCategories from "./goods/menu/GoodsCategories";
+import GoodsFilters from "./goods/menu/GoodsFilters";
+import GoodsViewMenu from "./goods/menu/GoodsViewMenu";
 
 class Menu extends React.Component {
     render() {
         return (
             <Switch>
-                <Route exact path='/' component={Categories}/>
-                <Route path='/goods/categories/:number' component={Filters}/>}/>
+                <Route exact path='/' component={GoodsCategories}/>
+                <Route exact path='/goods/categories/:number' component={GoodsFilters}/>}/>
+                <Route exact path='/goods/:number' render={(props) => <GoodsViewMenu authenticated={this.props.authenticated} {...props}/>}/>
             </Switch>
         )
     }
