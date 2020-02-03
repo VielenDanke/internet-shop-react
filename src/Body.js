@@ -6,6 +6,7 @@ import React from "react";
 
 import {Route, Switch} from "react-router-dom";
 import GoodsToBasketConfirm from "./goods/body/GoodsToBasketConfirm";
+import GoodsDeleteConfirm from "./goods/body/GoodsDeleteConfirm";
 
 class Body extends React.Component {
     render() {
@@ -13,6 +14,7 @@ class Body extends React.Component {
             <Switch>
                 <Route exact path='/' component={Welcome}/>
                 <Route exact path='/goods/:number' render={(props) => <GoodsView authenticated={this.props.authenticated} {...props}/>}/>
+                <Route exact path='/goods/delete/:number' render={(props) => <GoodsDeleteConfirm authenticated={this.props.authenticated} {...props}/>}/>
                 <Route exact path='/goods/categories/:number' render={(props) => <GoodsList authenticated={this.props.authenticated} {...props}/>}/>
                 <Route exact path='/goods/categories/:number/filter' render={(props) => <GoodsListWithFilter authenticated={this.props.authenticated} {...props}/>}/>
                 <Route exact path='/goods/toBasket/:number' render={(props) => <GoodsToBasketConfirm authenticated={this.props.authenticated} {...props}/>}/>

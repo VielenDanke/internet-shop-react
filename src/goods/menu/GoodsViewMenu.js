@@ -14,7 +14,7 @@ class GoodsViewMenu extends React.Component {
             <div className="width20 box-col">
                 <a href='#'>add</a><br/><br/>
                 <a href='#'>edit</a><br/><br/>
-                <a href='#'>delete</a><br/><br/>
+                <a href={`/goods/delete/${this.state.goodsId}`}>delete</a><br/><br/>
                 <form>
                     <label>count:</label><br/><input type="text" id="count" name="count" size="2"/><br/>
                     <Link to={`/goods/toBasket/${this.state.goodsId}`}>to basket</Link>
