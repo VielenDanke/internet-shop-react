@@ -41,7 +41,7 @@ class Header extends React.Component {
                         {/*<Route exact path="/" component={Categories}></Route>*/}
                         <PrivateRoute path="/profile" authenticated={this.props.authenticated} currentUser={this.props.currentUser}
                                       component={Profile}></PrivateRoute>
-                        <PrivateRoute path="/basket" authenticated={this.state.authenticated} currentUser={this.state.currentUser}
+                        <PrivateRoute path="/basket" authenticated={this.props.authenticated} currentUser={this.props.currentUser}
                                       component={Basket}></PrivateRoute>
                         <Route path="/login"
                                render={(props) => <Login authenticated={this.props.authenticated }

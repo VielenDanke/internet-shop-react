@@ -12,8 +12,9 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            authenticated: true,
+            authenticated: false,
             currentUser: null,
+            loading: false
         }
 
         this.loadCurrentlyLoggedInUser = this.loadCurrentlyLoggedInUser.bind(this);
