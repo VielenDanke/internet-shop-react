@@ -17,7 +17,7 @@ import Alert from 'react-s-alert';
 import 'react-s-alert/dist/s-alert-default.css';
 import 'react-s-alert/dist/s-alert-css-effects/slide.css';
 import './App.css';
-import Categories from "./goods/menu/GoodsCategories";
+import Basket from "./user/profile/Basket";
 
 class Header extends React.Component {
     constructor(props) {
@@ -79,6 +79,8 @@ class Header extends React.Component {
                         {/*<Route exact path="/" component={Categories}></Route>*/}
                         <PrivateRoute path="/profile" authenticated={this.state.authenticated} currentUser={this.state.currentUser}
                                       component={Profile}></PrivateRoute>
+                        <PrivateRoute path="/basket" authenticated={this.state.authenticated} currentUser={this.state.currentUser}
+                                      component={Basket}></PrivateRoute>
                         <Route path="/login"
                                render={(props) => <Login authenticated={this.state.authenticated} {...props} />}></Route>
                         <Route path="/signup"
