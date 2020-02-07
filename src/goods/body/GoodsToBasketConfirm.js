@@ -11,8 +11,17 @@ class GoodsToBasketConfirm extends React.Component {
     }
 
     fetchToBasket = (props) => {
-        // здесь отправить запрос на добавление товара в крзину
-        // если запрос успешный то requestComplited = true
+        // fetch("http://localhost:8989/goods/toBasket", {
+        //     method: "POST",
+        //     data:
+        // })
+        //     .then((response) => {
+        //         if (response.status === 204) {
+        //             this.setState({requestComplited: true});
+        //         } else {
+        //             this.setState({requestComplited: false})
+        //         }
+        //     })
     };
 
     componentDidMount() {

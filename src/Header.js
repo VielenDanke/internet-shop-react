@@ -22,69 +22,32 @@ import Basket from "./user/profile/Basket";
 class Header extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            authenticated: false,
-            currentUser: null,
-            loading: false
-        }
-
-        this.loadCurrentlyLoggedInUser = this.loadCurrentlyLoggedInUser.bind(this);
-        this.handleLogout = this.handleLogout.bind(this);
-    }
-
-    loadCurrentlyLoggedInUser() {
-        this.setState({
-            loading: true
-        });
-
-        getCurrentUser()
-            .then(response => {
-                this.setState({
-                    currentUser: response,
-                    authenticated: true,
-                    loading: false
-                });
-            }).catch(error => {
-            this.setState({
-                loading: false
-            });
-        });
-    }
-
-    handleLogout() {
-        localStorage.removeItem(ACCESS_TOKEN);
-        this.setState({
-            authenticated: false,
-            currentUser: null
-        });
-        Alert.success("You're safely logged out!");
-    }
-
-    componentDidMount() {
-        this.loadCurrentlyLoggedInUser();
     }
 
     render() {
-        if(this.state.loading) {
+        if(this.props.loading) {
             return <LoadingIndicator />
         }
 
         return (
             <div className="app">
                 <div className="app-top-box">
-                    <AppHeader authenticated={this.state.authenticated} onLogout={this.handleLogout} />
+                    <AppHeader authenticated={this.props.authenticated}
+                               onLogout={this.props.onLogout}
+                    />
                 </div>
                 <div className="app-body">
                     <Switch>
                         {/*<Route exact path="/" component={Categories}></Route>*/}
-                        <PrivateRoute path="/profile" authenticated={this.state.authenticated} currentUser={this.state.currentUser}
+                        <PrivateRoute path="/profile" authenticated={this.props.authenticated} currentUser={this.props.currentUser}
                                       component={Profile}></PrivateRoute>
                         <PrivateRoute path="/basket" authenticated={this.state.authenticated} currentUser={this.state.currentUser}
                                       component={Basket}></PrivateRoute>
                         <Route path="/login"
-                               render={(props) => <Login authenticated={this.state.authenticated} {...props} />}></Route>
+                               render={(props) => <Login authenticated={this.props.authenticated }
+                                                         {...props} />}></Route>
                         <Route path="/signup"
-                               render={(props) => <Signup authenticated={this.state.authenticated} {...props} />}></Route>
+                               render={(props) => <Signup authenticated={this.props.authenticated} {...props} />}></Route>
                         <Route path="/oauth2/redirect" component={OAuth2RedirectHandler}></Route>
                         {/*<Route component={NotFound}></Route>*/}
                     </Switch>
