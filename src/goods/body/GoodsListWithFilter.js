@@ -5,7 +5,8 @@ class GoodsListWithFilter extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            goods: []
+            goods: [],
+            categoryId: parseInt(props.match.params.categoryId, 10)
         };
     }
 
@@ -50,9 +51,9 @@ class GoodsListWithFilter extends React.Component {
             "                \"descriptionLike\": \"" + descriptionLike + "\"\n" +
             "        }}";
 
-        fetch("http://localhost:8989/goods/categories/" + parseInt(props.match.params.number, 10) + "/filter", {
+        fetch("http://localhost:8989/goods/categories/" + this.state.categoryId + "/filter", {
             method: "POST",
-            body: data,      //JSON.stringify(data),
+            body: data,
             headers: {"Content-Type": "application/json"}
         })
             .then(res => res.json())
@@ -73,7 +74,7 @@ class GoodsListWithFilter extends React.Component {
             <div>
                 {goods.map((g, i) => (
                     <div key={i} id={g.id}>
-                        <Link to={`/goods/${g.id}`}>{g.name}</Link>
+                        <Link to={`/goods/categories/${this.state.categoryId}/${g.id}`}>{g.name}</Link>
                         <a> {g.cost} </a>
                         <a> {g.description} </a>
                     </div>

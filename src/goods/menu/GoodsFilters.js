@@ -5,7 +5,7 @@ class GoodsFilters extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            categoryId: parseInt(props.match.params.number, 10)
+            categoryId: parseInt(props.match.params.categoryId, 10)
         };
     }
 
