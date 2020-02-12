@@ -96,6 +96,7 @@ class LoginForm extends Component {
             .then(response => {
                 localStorage.setItem(ACCESS_TOKEN, response.accessToken);
                 Alert.success("You're successfully logged in!");
+                this.props.onLogin();
                 this.props.history.push("/");
             }).catch(error => {
             Alert.error((error && error.message) || 'Oops! Something went wrong. Please try again!');

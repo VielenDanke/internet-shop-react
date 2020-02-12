@@ -65,9 +65,6 @@ class GoodsEdit extends React.Component {
         })
             .then((response) => {
                 if (response.status === 200) {
-                    // this.setState({requestComplited: true});
-                    // Alert.success("Record was saved.");
-                    // this.props.history.push("/goods/categories/" + this.state.categoryId + "/" + this.state.id);
                     return response.json()
                 } else {
                     this.setState({requestComplited: false});

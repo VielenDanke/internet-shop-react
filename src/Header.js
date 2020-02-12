@@ -45,7 +45,9 @@ class Header extends React.Component {
                                       component={Basket}></PrivateRoute>
                         <Route path="/login"
                                render={(props) => <Login authenticated={this.props.authenticated }
-                                                         {...props} />}></Route>
+                                                         onLogin = {this.props.onLogin}
+                                                         {...props} />}>
+                        </Route>
                         <Route path="/signup"
                                render={(props) => <Signup authenticated={this.props.authenticated} {...props} />}></Route>
                         <Route path="/oauth2/redirect" component={OAuth2RedirectHandler}></Route>

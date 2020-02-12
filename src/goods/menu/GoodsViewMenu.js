@@ -1,5 +1,7 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+import Alert from "react-s-alert";
+import {IS_ADMIN} from "../../constants";
 
 class GoodsViewMenu extends React.Component {
     constructor(props) {
@@ -7,35 +9,23 @@ class GoodsViewMenu extends React.Component {
         this.state = {
             goodsId: parseInt(props.match.params.goodsId, 10),
             categoryId: parseInt(props.match.params.categoryId, 10),
-            isAdmin: false
+            isAdmin: "false",
+            currentUser: props.currentUser
         };
     }
 
-    isAdmin() {
-        this.props.currentUser.authority.map(a => {
-            if (a === "ROLE_ADMIN")
-                return true;
-        });
-        return false;
-    }
-
-    // componentWillReceiveProps(nextProps, nextContext) {
-    //     this.setState({
-    //         currentUser: nextProps.currentUser
-    //     })
-    // }
-
     componentDidMount() {
-        this.props.currentUser.authority.map(a => {
-            if (a === "ROLE_ADMIN")
-                this.setState({isAdmin: true})
-        });
+        if(localStorage.getItem(IS_ADMIN)) {
+            this.setState({isAdmin: localStorage.getItem(IS_ADMIN)});
+        } else {
+            this.setState({isAdmin: "false"});
+        }
     }
 
     render() {
         return (
             <div className="width20 box-col">
-                {(this.state.isAdmin) ? (
+                {(this.state.isAdmin=="true") ? (
                     <div>
                         <Link to={`/goods/categories/${this.state.categoryId}/${this.state.goodsId}/add`}>add</Link><br/><br/>
                         <Link to={`/goods/categories/${this.state.categoryId}/${this.state.goodsId}/edit`}>edit</Link><br/><br/>
