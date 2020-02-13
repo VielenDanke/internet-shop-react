@@ -11,6 +11,8 @@ class GoodsList extends React.Component {
     }
 
     fetchGoods = (props) => {
+        document.getElementById("filter").style.display = 'block';
+        document.getElementById("clearFilter").style.display = 'none';
         fetch("http://localhost:8989/goods/categories/" +  this.state.categoryId)
             .then(res => res.json())
             .then((goods) => {

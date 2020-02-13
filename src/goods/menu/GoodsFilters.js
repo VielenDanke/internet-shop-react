@@ -5,7 +5,7 @@ class GoodsFilters extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            categoryId: parseInt(props.match.params.categoryId, 10)
+            categoryId: parseInt(props.match.params.categoryId, 10),
         };
     }
 
@@ -18,8 +18,8 @@ class GoodsFilters extends React.Component {
                     <label>to:</label><input type="text" id="highCost" name="highCost" size="2"/><br/><br/>
                     <label>by name:</label><br/><input type="text" id="byName" name="byName"/><br/>
                     <label>by description:</label><br/><input type="text" id="byDescription" name="byDescription"/><br/><br/>
-                    <Link to={`/goods/categories/${this.state.categoryId}/filter`}>Filter</Link><br/><br/>
-                    <Link to={`/goods/categories/${this.state.categoryId}`}>clear filters</Link>
+                    <Link id="filter" to={`/goods/categories/${this.state.categoryId}/filter`}>Filter</Link><br/><br/>
+                    <Link id="clearFilter" to={`/goods/categories/${this.state.categoryId}`}>clear filters</Link>
                 </form>
             </div>
         )

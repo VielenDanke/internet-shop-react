@@ -14,6 +14,8 @@ class GoodsListWithFilter extends React.Component {
         const accessible = document.getElementById("accessible").checked;
         let lowCost = document.getElementById("lowCost").value;
         let highCost = document.getElementById("highCost").value;
+        document.getElementById("filter").style.display = 'none';
+        document.getElementById("clearFilter").style.display = 'block';
         let inRangeOfCost = false;
         if (lowCost!=="" && highCost!=="") {
             inRangeOfCost = true;

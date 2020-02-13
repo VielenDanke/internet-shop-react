@@ -21,7 +21,7 @@ class AppHeader extends Component {
                                         <NavLink to="/basket">Basket</NavLink>
                                     </li>
                                     <li>
-                                        <a onClick={this.props.onLogout}>Logout</a>
+                                        <a href="/" onClick={this.props.onLogout}>Logout</a>
                                     </li>
                                 </ul>
                             ): (

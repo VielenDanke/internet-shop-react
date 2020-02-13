@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import {requestWithToken} from '../../util/APIUtils';
 import Alert from "react-s-alert";
 
-class GoodsEdit extends React.Component {
+class GoodsAdd extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -122,4 +122,4 @@ class GoodsEdit extends React.Component {
     }
 }
 
-export default GoodsEdit
+export default GoodsAdd
