@@ -117,10 +117,6 @@ input {
   height: 30px;
 }
 
-/*.rounded(@radius: 2px) {*/
-/*  -webkit-border-radius: @radius;*/
-/*  -moz-border-radius: @radius;*/
-/*  border-radius: @radius;*/
-/*  border: 1px solid black;*/
-/*  padding: 5px;*/
-/*}*/
+.noborder {
+  border: 0;
+}

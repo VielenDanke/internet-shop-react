@@ -71,7 +71,7 @@ class GoodsEdit extends React.Component {
                     this.props.history.push("/goods/categories/" + this.state.categoryId + "/" + this.state.id);
                 } else {
                     this.setState({requestComplited: false});
-                    Alert.success("Error. Record wasn't saved.");
+                    Alert.error("Error. Record wasn't saved.");
                     this.props.history.push("/goods/categories/" + this.state.categoryId + "/" + this.state.id);
                 }
             })

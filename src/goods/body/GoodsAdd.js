@@ -68,7 +68,7 @@ class GoodsAdd extends React.Component {
                     return response.json()
                 } else {
                     this.setState({requestComplited: false});
-                    Alert.success("Error. Record wasn't created.");
+                    Alert.error("Error. Record wasn't created.");
                     this.props.history.push("/goods/categories/" + this.state.categoryId);
                 }
             })

@@ -38,11 +38,16 @@ class GoodsView extends React.Component {
         return (
             <div>
                 {(this.state.requestComplited) ? (
-                    <div id={this.state.goods.id}>
-                        <a>{this.state.goods.name}</a>
-                        <a> {this.state.goods.cost} </a>
-                        <a> {this.state.goods.description} </a>
-                    </div>
+                    <form>
+                        <input type="text" id="goodsId" value={this.state.goods.id} hidden/>
+                        <label>name:</label>
+                        <input type="text" class="noborder" id="goodsName" value={this.state.goods.name}/> <br/>
+                        <label>cost:</label>
+                        <input type="text" class="noborder" id="goodsCost" value={this.state.goods.cost}/>  <br/>
+                        <label>description:</label>
+                        <input type="text" class="noborder" id="goodsDescription" value={this.state.goods.description}/>  <br/>
+                    {/*// </div>*/}
+                    </form>
                 ) : (
                     <div>
                         Record not found.<br/><br/>

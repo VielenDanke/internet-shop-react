@@ -7,7 +7,6 @@ import GoodsListWithFilter from "./goods/body/GoodsListWithFilter";
 import React from "react";
 
 import {Route, Switch} from "react-router-dom";
-import GoodsToBasketConfirm from "./goods/body/GoodsToBasketConfirm";
 import GoodsDeleteConfirm from "./goods/body/GoodsDeleteConfirm";
 
 class Body extends React.Component {
@@ -22,7 +21,6 @@ class Body extends React.Component {
                 <Route exact path='/goods/categories/:categoryId/:goodsId/edit' render={(props) => <GoodsEdit authenticated={this.props.authenticated} {...props}/>}/>
                 <Route exact path='/goods/categories/:categoryId/:goodsId/delete' render={(props) => <GoodsDeleteConfirm authenticated={this.props.authenticated} {...props}/>}/>
                 <Route exact path='/goods/categories/:categoryId' render={(props) => <GoodsList authenticated={this.props.authenticated} {...props}/>}/>
-                <Route exact path='/goods/toBasket/:number' render={(props) => <GoodsToBasketConfirm authenticated={this.props.authenticated} {...props}/>}/>
             </Switch>
         )
     }

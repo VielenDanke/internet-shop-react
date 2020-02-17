@@ -4,7 +4,7 @@ import './App.css';
 import Header from "./Header.js";
 import Main from "./Main.js";
 import {getCurrentUser, login} from "./util/APIUtils";
-import {ACCESS_TOKEN, IS_ADMIN} from "./constants";
+import {ACCESS_TOKEN, IS_ADMIN, IS_USER} from "./constants";
 
 import Alert from 'react-s-alert';
 
@@ -31,6 +31,16 @@ class App extends React.Component {
         return "false";
     }
 
+    isUser(currentUser) {
+        const n = currentUser.authority.length;
+        for (let i = 0; i < n; i++) {
+            if (currentUser.authority[i] == 'ROLE_USER') {
+                return "true";
+            }
+        }
+        return "false";
+    }
+
     loadCurrentlyLoggedInUser() {
         this.setState({
             loading: "true"
@@ -39,6 +49,7 @@ class App extends React.Component {
         getCurrentUser()
             .then(response => {
                 localStorage.setItem(IS_ADMIN, this.isAdmin(response));
+                localStorage.setItem(IS_USER, this.isUser(response));
                 this.setState((state, props) => ({
                     currentUser: response,
                     authenticated: true,

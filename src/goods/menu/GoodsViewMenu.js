@@ -1,6 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {IS_ADMIN} from "../../constants";
+import {IS_ADMIN, IS_USER} from "../../constants";
+import {requestWithToken} from "../../util/APIUtils";
+import Alert from 'react-s-alert';
 
 class GoodsViewMenu extends React.Component {
     constructor(props) {
@@ -9,6 +11,7 @@ class GoodsViewMenu extends React.Component {
             goodsId: parseInt(props.match.params.goodsId, 10),
             categoryId: parseInt(props.match.params.categoryId, 10),
             isAdmin: "false",
+            isUser: "false",
             currentUser: props.currentUser
         };
     }
@@ -19,13 +22,43 @@ class GoodsViewMenu extends React.Component {
         } else {
             this.setState({isAdmin: "false"});
         }
+        if (localStorage.getItem(IS_USER)) {
+            this.setState({isUser: localStorage.getItem(IS_USER)});
+        } else {
+            this.setState({isUser: "false"});
+        }
+    }
+
+    fetchToBasket = (props) => {
+        let goodsId = document.getElementById("goodsId").value;
+        let goodsCost = document.getElementById("goodsCost").value;
+        let count = document.getElementById("count").value;
+
+        const data = "{\n" +
+            "            \"count\" : " + count + ",\n" +
+            "            \"cost\" : " + goodsCost + ",\n" +
+            "            \"goodsId\" : " + goodsId + "\n" +
+            "        }";
+
+        requestWithToken({
+            url: "http://localhost:8989/goods/toBasket",
+            method: "POST",
+            body: data
+        }).then((response) => {
+                if (response.status === 201) {
+                    Alert.success("Goods was added to basket")
+                } else {
+                    Alert.error("Error. Goods wasn't added to basket")
+                }
+            }
+        )
     }
 
     render() {
         return (
             <div className="width20 box-col">
                 {this.props.authenticated ? (
-                    <div >
+                    <div>
                         {(this.state.isAdmin == "true") ? (
                             <div>
                                 <Link
@@ -36,12 +69,18 @@ class GoodsViewMenu extends React.Component {
                                     to={`/goods/categories/${this.state.categoryId}/${this.state.goodsId}/delete`}>delete</Link><br/><br/>
                             </div>
                         ) : (
-                            <div></div>
+                            <div>
+                                {(this.state.isUser == "true") ? (
+                                    <form>
+                                        <label>count:</label><br/><input type="text" id="count" name="count"
+                                                                         size="2"/><br/>
+                                        <a href="#" onClick={this.fetchToBasket}>to basket</a>
+                                    </form>
+                                ) : (
+                                    <div></div>
+                                )}
+                            </div>
                         )}
-                        <form>
-                            <label>count:</label><br/><input type="text" id="count" name="count" size="2"/><br/>
-                            <Link to={`/goods/toBasket/${this.state.goodsId}`}>to basket</Link>
-                        </form>
                     </div>
                 ) : (
                     <div></div>
@@ -51,4 +90,4 @@ class GoodsViewMenu extends React.Component {
     }
 }
 
-export default GoodsViewMenu
+export default GoodsViewMenu;

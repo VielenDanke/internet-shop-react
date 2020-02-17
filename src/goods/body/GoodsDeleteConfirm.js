@@ -24,7 +24,7 @@ class GoodsDeleteConfirm extends React.Component {
                     this.props.history.push("/goods/categories/" + this.state.categoryId);
                 } else {
                     this.setState({requestComplited: false})
-                    Alert.success("Error. Record wasn't deleted.");
+                    Alert.error("Error. Record wasn't deleted.");
                     this.props.history.push("/goods/categories/" + this.state.categoryId + "/" + this.state.goodsId);
                 }
             })
