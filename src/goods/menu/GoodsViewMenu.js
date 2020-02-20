@@ -34,7 +34,7 @@ class GoodsViewMenu extends React.Component {
         let goodsCost = document.getElementById("goodsCost").value;
         let count = document.getElementById("count").value;
 
-        const data = "{\n" +
+        const orderDetailsTO = "{\n" +
             "            \"count\" : " + count + ",\n" +
             "            \"cost\" : " + goodsCost + ",\n" +
             "            \"goodsId\" : " + goodsId + "\n" +
@@ -43,7 +43,7 @@ class GoodsViewMenu extends React.Component {
         requestWithToken({
             url: "http://localhost:8989/goods/toBasket",
             method: "POST",
-            body: data
+            body: orderDetailsTO
         }).then((response) => {
                 if (response.status === 201) {
                     Alert.success("Goods was added to basket")

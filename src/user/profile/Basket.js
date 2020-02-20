@@ -24,8 +24,9 @@ class Basket extends Component {
             <div>
                 <div className="width20 box-col">
                     {this.state.orderDetails.map((c, i) => (
-                        <div key={i} id={c.id}>
-                            {c.goods}
+                        <div key={c.id}>
+                            {c.goodsName}
+                            {c.cost}
                         </div>
                     ))}
                 </div>
