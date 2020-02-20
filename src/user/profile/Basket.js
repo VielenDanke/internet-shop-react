@@ -1,5 +1,6 @@
 import React, {Component} from "react";
-import {getBasket} from "../../util/APIUtils";
+import {confirmOrder, getBasket, requestWithToken} from "../../util/APIUtils";
+import Alert from "react-s-alert";
 
 class Basket extends Component {
     constructor(props) {
@@ -18,6 +19,22 @@ class Basket extends Component {
         })
     }
 
+    fetchConfirmOrder = (props) => {
+        requestWithToken({
+            url: "http://localhost:8989/goods/basket/order",
+            method: "GET"
+        })
+            .then((response) => {
+                if (response.status === 202) {
+                    this.setState({requestComplited: true});
+                    Alert.success("Order was confirmed.");
+                } else {
+                    this.setState({requestComplited: false})
+                    Alert.error("Order is not correct.");
+                }
+            })
+    };
+
     render() {
 
         return (
@@ -29,6 +46,9 @@ class Basket extends Component {
                             {c.cost}
                         </div>
                     ))}
+                </div>
+                <div>
+                    <button onClick={this.fetchConfirmOrder}>Confirm order</button>
                 </div>
             </div>
         );
